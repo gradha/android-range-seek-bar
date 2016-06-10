@@ -630,7 +630,7 @@ public class RangeSeekBar<T extends Number> extends ImageView {
                 drawThumbShadow(normalizedToScreen(normalizedMinValue), canvas);
             }
             drawThumb(normalizedToScreen(normalizedMinValue), Thumb.MIN.equals(pressedThumb), canvas,
-                    selectedValuesAreDefault);
+                    selectedValuesAreDefault, true);
         }
 
         // draw maximum thumb & shadow (if necessary)
@@ -638,7 +638,7 @@ public class RangeSeekBar<T extends Number> extends ImageView {
             drawThumbShadow(normalizedToScreen(normalizedMaxValue), canvas);
         }
         drawThumb(normalizedToScreen(normalizedMaxValue), Thumb.MAX.equals(pressedThumb), canvas,
-                selectedValuesAreDefault);
+                selectedValuesAreDefault, false);
 
         // draw the text if sliders have moved from default edges
         if (mShowTextAboveThumbs && (mActivateOnDefaultValues || !selectedValuesAreDefault)) {
@@ -712,7 +712,7 @@ public class RangeSeekBar<T extends Number> extends ImageView {
      * @param pressed     Is the thumb currently in "pressed" state?
      * @param canvas      The canvas to draw upon.
      */
-    private void drawThumb(float screenCoord, boolean pressed, Canvas canvas, boolean areSelectedValuesDefault) {
+    private void drawThumb(float screenCoord, boolean pressed, Canvas canvas, boolean areSelectedValuesDefault, boolean leftThumb) {
         Bitmap buttonToDraw;
         if (!mActivateOnDefaultValues && areSelectedValuesDefault) {
             buttonToDraw = thumbDisabledImage;
@@ -723,6 +723,11 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         canvas.drawBitmap(buttonToDraw, screenCoord - mThumbHalfWidth,
                 mTextOffset,
                 paint);
+
+        drawThumbDecoration(screenCoord, mTextOffset, pressed, canvas, areSelectedValuesDefault, leftThumb);
+    }
+
+    public void drawThumbDecoration(float x, float y, boolean pressed, Canvas canvas, boolean areSelectedValuesDefault, boolean leftThumb) {
     }
 
     /**
