@@ -8,6 +8,13 @@
         <!-- the maximum of the range -->
         <attr name="absoluteMaxValue" format="integer|float"/>
 
+        <!-- amount of pixels to draw the bar up/down -->
+        <attr name="seekbarVerticalOffset" format="dimension"/>
+
+        <!-- amount of pixels to draw the thumb left/right -->
+        <attr name="thumbLeftOffset" format="dimension"/>
+        <attr name="thumbRightOffset" format="dimension"/>
+
         <!-- show a single slider -->
         <attr name="singleThumb" format="boolean"/>
 
@@ -39,6 +46,9 @@
         <attr name="thumbNormal" format="reference"/>
         <attr name="thumbPressed" format="reference"/>
         <attr name="thumbDisabled" format="reference"/>
+        <attr name="thumbNormalRight" format="reference"/>
+        <attr name="thumbPressedRight" format="reference"/>
+        <attr name="thumbDisabledRight" format="reference"/>
 
         <!-- thumb shadow specifications -->
         <attr name="thumbShadow" format="boolean"/>
